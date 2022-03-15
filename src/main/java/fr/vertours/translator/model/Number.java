@@ -12,13 +12,13 @@ public class Number {
     private Integer number;
     private String french;
     private String english;
-    private String deutsche;
+    private String german;
 
-    public Number(Integer number, String french, String english, String deutsche) {
+    public Number(Integer number, String french, String english, String german) {
         this.number = number;
         this.french = french;
         this.english = english;
-        this.deutsche = deutsche;
+        this.german = german;
     }
 
     public Number() {
@@ -57,11 +57,11 @@ public class Number {
         this.english = english;
     }
 
-    public String getDeutsche() {
-        return deutsche;
+    public String getGerman() {
+        return german;
     }
 
-    public void setDeutsche(String deutsche) {
-        this.deutsche = deutsche;
+    public void setGerman(String deutsche) {
+        this.german = deutsche;
     }
 }

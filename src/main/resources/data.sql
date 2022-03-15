@@ -1,4 +1,4 @@
-INSERT INTO number (DEUTSCHE, ENGLISH, FRENCH, NUMBER)
+INSERT INTO number (GERMAN, ENGLISH, FRENCH, NUMBER)
 VALUES
 ('eins', 'one', 'un', 1),
 ('zwei','two','deux', 2),
