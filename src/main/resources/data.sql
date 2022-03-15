@@ -1,15 +1,33 @@
-CREATE USER IF NOT EXISTS "SA" SALT '89cc340ec97f73e7' HASH '5e33c4c8aa1aac8ffac004413f1b37766490e60929967374365cc09d47c69321' ADMIN;
-CREATE SEQUENCE "PUBLIC"."SYSTEM_SEQUENCE_1A671491_EEA7_4C69_9396_BC864CB5A3CA" START WITH 2 BELONGS_TO_TABLE;
-CREATE MEMORY TABLE "PUBLIC"."NUMBER"(
-    "ID" BIGINT DEFAULT NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_1A671491_EEA7_4C69_9396_BC864CB5A3CA" NOT NULL NULL_TO_DEFAULT SEQUENCE "PUBLIC"."SYSTEM_SEQUENCE_1A671491_EEA7_4C69_9396_BC864CB5A3CA",
-    "DEUTSCHE" VARCHAR(255),
-    "ENGLISH" VARCHAR(255),
-    "FRENCH" VARCHAR(255),
-    "NUMBER" INTEGER
-);
-ALTER TABLE "PUBLIC"."NUMBER" ADD CONSTRAINT "PUBLIC"."CONSTRAINT_8" PRIMARY KEY("ID");
-SELECT COUNT(*) FROM PUBLIC.NUMBER;
+INSERT INTO number (DEUTSCHE, ENGLISH, FRENCH, NUMBER)
+VALUES
+('eins', 'one', 'un', 1),
+('zwei','two','deux', 2),
+('drei','three','trois', 3),
+('vier','four','quatre', 4),
+('fünf','five','cinq', 5),
+('sechs','six','six', 6),
+('sieben','seven','sept', 7),
+('acht','eight','huit', 8),
+('neun','nine','neuf', 9),
+('zehn','ten','dix', 10),
+('elf', 'eleven', 'onze', 11),
+('zwölf','twelve','douze', 12),
+('dreizehn','thirteen','treize', 13),
+('vierzehn','fourteen','quatorze', 14),
+('fünfzehn','fifteen','quinze', 15),
+('sechzehn','sixteen','seize', 16),
+('siebzehn','seventeen','dix-sept', 17),
+('achtzehn','eighteen','dix-huit', 18),
+('neunzehn','nineteen','dix-neuf', 19),
+('zwanzig','twenty','vingt', 20),
+('einundzwanzig', 'twenty-one', 'vingt et un', 21),
+('zweiundzwanzig','twenty-two','vingt-deux', 22),
+('dreiundzwanzig','twenty-three','vingt-trois', 23),
+('vierundzwanzig','twenty-four','vingt-quatre', 24),
+('fünfundzwanzig','twenty-five','vingt-cinq', 25),
+('sechsundzwanzig','twenty-six','vingt-six', 26),
+('siebenundzwanzig','twenty-seven','vingt-sept', 27),
+('achtundzwanzig','twenty-eight','vingt-huit', 28),
+('neunundzwanzig	','twenty-nine','vingt-neuf', 29),
+('dreißig','thirty','trente', 30);
 
-
-INSERT INTO "PUBLIC"."NUMBER" VALUES
-(1, 'Aymeric', 'Olivier', 'Perrin', 1);

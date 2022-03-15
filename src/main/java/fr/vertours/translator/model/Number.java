@@ -1,11 +1,9 @@
 package fr.vertours.translator.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "number")
 public class Number {
 
     @Id
@@ -21,6 +19,10 @@ public class Number {
         this.french = french;
         this.english = english;
         this.deutsche = deutsche;
+    }
+
+    public Number() {
+
     }
 
     public Long getId() {
