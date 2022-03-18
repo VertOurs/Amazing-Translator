@@ -1,11 +1,13 @@
 package fr.vertours.translator.service;
 
-import fr.vertours.translator.exception.InaccurateNumberException;
+import fr.vertours.translator.exception.InaccurateNumberOrLangException;
 import fr.vertours.translator.model.Number;
 import fr.vertours.translator.repository.NumberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import static fr.vertours.translator.utils.CaseConverter.verifyUpperCase;
 
 @Service
 public class NumberServiceImpl implements NumberService {
@@ -16,25 +18,11 @@ public class NumberServiceImpl implements NumberService {
         this.repository = repository;
     }
 
-    private Number getNumberObjectByNumber(int num) {
-        Number number = Optional.ofNullable(repository.findByNumber(num))
-                .orElseThrow(() -> new InaccurateNumberException());
-        return number ;
-    }
-
     @Override
-    public String getFrenchTranslation(int num) {
-        return getNumberObjectByNumber(num).getFrench();
-
-    }
-
-    @Override
-    public String getDeutscheTranslation(int num) {
-        return getNumberObjectByNumber(num).getGerman();
-    }
-
-    @Override
-    public String getEnglishTranslation(int num) {
-        return getNumberObjectByNumber(num).getEnglish();
+    public String getTranslation(String lang, int num) {
+        String lang1 = verifyUpperCase(lang);
+        Number number = Optional.ofNullable(repository.findByLanguageAndNumber(lang1, num))
+                .orElseThrow(() -> new InaccurateNumberOrLangException());
+        return number.getTranslation();
     }
 }

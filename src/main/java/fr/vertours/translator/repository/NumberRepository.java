@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NumberRepository extends JpaRepository<Number, Long> {
 
-    Number findByNumber(int num);
+    Number findByLanguageAndNumber(String lang, int num);
 }

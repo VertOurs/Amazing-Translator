@@ -4,17 +4,16 @@ French and German.
 
 
 ## How to use
-This API has three endpoints depending on the language involved:
-- ``/french``
-- ``/german``
-- ``/english``
+This API currently supports the English, French and German languages.
+It uses the ISO code (case-insensitive):
+- ``/{language}``
 
-each endpoint takes as parameter the number whose translation we want to know.
+This endpoint takes as parameter the number whose translation we want to know.
 
 ### sample requests
-- we want to know the translation of 8 in French :
-  ``http://localhost:8080/french?number=8``
-- we want to know the translation of 5 in German :
-  ``http://localhost:8080/german?number=5``
-- we want to know the translation of 14 in English :
-  ``http://localhost:8080/english?number=14``
+- we want to know the translation of 8 in French :  
+  ``http://localhost:8080/FR?number=8``
+- we want to know the translation of 5 in German :  
+  ``http://localhost:8080/De?number=5``
+- we want to know the translation of 14 in English :  
+  ``http://localhost:8080/en?number=14``

@@ -13,8 +13,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(InaccurateNumberException.class)
-    public final ResponseEntity<String> handledInaccurateNumberException(InaccurateNumberException e) {
+    @ExceptionHandler(InaccurateNumberOrLangException.class)
+    public final ResponseEntity<String> handledInaccurateNumberException(InaccurateNumberOrLangException e) {
         log.error("Handling " + e.getClass().getSimpleName() + " due to " + e.getMessage() + ". More informations : "+e.getStackTrace());
         return ResponseEntity.badRequest().body(e.getMessage());
     }

@@ -10,19 +10,16 @@ public class Number {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer number;
-    private String french;
-    private String english;
-    private String german;
+    private String language;
+    private String translation;
 
-    public Number(Integer number, String french, String english, String german) {
+    public Number(Integer number, String language, String translation) {
         this.number = number;
-        this.french = french;
-        this.english = english;
-        this.german = german;
+        this.language = language;
+        this.translation = translation;
     }
 
     public Number() {
-
     }
 
     public Long getId() {
@@ -41,27 +38,19 @@ public class Number {
         this.number = number;
     }
 
-    public String getFrench() {
-        return french;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setFrench(String french) {
-        this.french = french;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public String getEnglish() {
-        return english;
+    public String getTranslation() {
+        return translation;
     }
 
-    public void setEnglish(String english) {
-        this.english = english;
-    }
-
-    public String getGerman() {
-        return german;
-    }
-
-    public void setGerman(String deutsche) {
-        this.german = deutsche;
+    public void setTranslation(String translation) {
+        this.translation = translation;
     }
 }
