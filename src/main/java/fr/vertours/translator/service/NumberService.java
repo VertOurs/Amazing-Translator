@@ -1,7 +1,9 @@
 package fr.vertours.translator.service;
 
+import fr.vertours.translator.model.Num;
+
 public interface NumberService {
 
-    String getTranslation(String lang, int num);
+    Num getTranslation(String lang, int num);
 
 }

@@ -1,10 +1,12 @@
 package fr.vertours.translator.service;
 
 import fr.vertours.translator.exception.InaccurateNumberOrLangException;
-import fr.vertours.translator.model.Number;
-import fr.vertours.translator.repository.NumberRepository;
+import fr.vertours.translator.model.Num;
+import fr.vertours.translator.repository.NumRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 import static fr.vertours.translator.utils.CaseConverter.verifyUpperCase;
@@ -12,17 +14,29 @@ import static fr.vertours.translator.utils.CaseConverter.verifyUpperCase;
 @Service
 public class NumberServiceImpl implements NumberService {
 
-    private final NumberRepository repository;
+    private final NumRepository repository;
+    private final RestTemplate restTemplate;
 
-    public NumberServiceImpl(NumberRepository repository) {
+    public NumberServiceImpl(NumRepository repository, RestTemplate restTemplate) {
         this.repository = repository;
+        this.restTemplate = restTemplate;
     }
 
+//    @Override
+//    public Num getTranslation(String lang, int num) {
+//        String lang1 = verifyUpperCase(lang);
+//        Num number = Optional.ofNullable(repository.findByLanguageAndNum(lang1, num))
+//                .orElseThrow(() -> new InaccurateNumberOrLangException());
+//        return number;
+//    }
+
     @Override
-    public String getTranslation(String lang, int num) {
+    @Transactional
+    public Num getTranslation(String lang, int num) {
         String lang1 = verifyUpperCase(lang);
-        Number number = Optional.ofNullable(repository.findByLanguageAndNumber(lang1, num))
+        Num number = Optional.ofNullable(repository.findByLanguageAndNum(lang1, num))
                 .orElseThrow(() -> new InaccurateNumberOrLangException());
-        return number.getTranslation();
+         restTemplate.postForObject("http://localhost:8081/historique",number, Num.class);
+        return number;
     }
 }

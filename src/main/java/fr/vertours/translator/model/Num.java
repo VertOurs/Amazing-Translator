@@ -3,23 +3,23 @@ package fr.vertours.translator.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "number")
-public class Number {
+@Table(name = "num")
+public class Num {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer number;
+    private Integer num;
     private String language;
     private String translation;
 
-    public Number(Integer number, String language, String translation) {
-        this.number = number;
+    public Num(String translation, String language, Integer num ) {
+        this.num = num;
         this.language = language;
         this.translation = translation;
     }
 
-    public Number() {
+    public Num() {
     }
 
     public Long getId() {
@@ -30,12 +30,12 @@ public class Number {
         this.id = id;
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getNum() {
+        return num;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setNum(Integer number) {
+        this.num = number;
     }
 
     public String getLanguage() {
