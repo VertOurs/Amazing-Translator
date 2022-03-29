@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 
-@RestController
+@RestController()
 public class TranslatorController {
 
     private final NumberService service;
@@ -22,18 +22,10 @@ public class TranslatorController {
         this.restTemplate = restTemplate;
     }
 
-    //http://localhost:8080/FR?nombre=8
-//    @GetMapping("/{language}")
-//    public ResponseEntity<String> getFrenchTranslation(
-//            @PathVariable(name = "language") String lang,
-//            @RequestParam("number") int num) {
-//        Num numObject = service.getTranslation(lang, num);
-//        restTemplate.postForObject("http://localhost:8081/historique",numObject, Num.class);
-//        return ResponseEntity.ok().body(numObject.getTranslation());
-//    }
+
 
     //http://localhost:8080/FR?nombre=8
-    @GetMapping("/{language}")
+    @GetMapping(path = "/{language}")
     public ResponseEntity<String> getFrenchTranslation(
             @PathVariable(name = "language") String lang,
             @RequestParam("number") int num) {
