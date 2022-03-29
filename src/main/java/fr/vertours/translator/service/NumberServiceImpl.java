@@ -3,6 +3,7 @@ package fr.vertours.translator.service;
 import fr.vertours.translator.exception.InaccurateNumberOrLangException;
 import fr.vertours.translator.model.Num;
 import fr.vertours.translator.repository.NumRepository;
+import fr.vertours.translator.thread.CallHistony;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,21 +23,16 @@ public class NumberServiceImpl implements NumberService {
         this.restTemplate = restTemplate;
     }
 
-//    @Override
-//    public Num getTranslation(String lang, int num) {
-//        String lang1 = verifyUpperCase(lang);
-//        Num number = Optional.ofNullable(repository.findByLanguageAndNum(lang1, num))
-//                .orElseThrow(() -> new InaccurateNumberOrLangException());
-//        return number;
-//    }
-
     @Override
     @Transactional
     public Num getTranslation(String lang, int num) {
         String lang1 = verifyUpperCase(lang);
         Num number = Optional.ofNullable(repository.findByLanguageAndNum(lang1, num))
                 .orElseThrow(() -> new InaccurateNumberOrLangException());
-         restTemplate.postForObject("http://localhost:8081/historique",number, Num.class);
+         Thread thread1 = new Thread(new CallHistony(number, restTemplate));
+         thread1.start();
         return number;
     }
+
+
 }
